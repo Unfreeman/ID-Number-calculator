@@ -47,13 +47,24 @@ def legal(str_in):
         return False
 
 
+mo_dy_list = [-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+
 def datechk(ymd):
     yr = int(ymd[0:4])
     mo = int(ymd[4:6])
     dy = int(ymd[6:8])
     if yr in range(year_from, year_to + 1) and mo in range(month_from, month_to + 1) and dy in range(day_from,
                                                                                                      day_to + 1):
-        return True
+        if dy <= mo_dy_list[mo]:
+            return True
+        elif mo == 2 and dy == 29:
+            if i % 4 == 0 and i % 100 != 0 or i % 400 == 0:
+                return True
+            else:
+                return False
+        else:
+            return False
     else:
         return False
 
