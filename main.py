@@ -11,13 +11,21 @@ day_from = 1
 day_to = 31
 
 
+vrf_pos = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "X"]
+
+
 def possible(list_in):
     if "*" in str(list_in):
         list_out = []
         for item in list_in:
-            for i in range(0, 10):
-                item_rpl = item.replace("*", str(i), 1)
-                list_out.append(item_rpl)
+            if item[-1] == "*" and item.count("*") == 1:
+                for i in range(0, 11):
+                    item_rpl = item.replace("*", vrf_pos[i], 1)
+                    list_out.append(item_rpl)
+            else:
+                for i in range(0, 10):
+                    item_rpl = item.replace("*", str(i), 1)
+                    list_out.append(item_rpl)
         return possible(list_out)
     else:
         return list_in
