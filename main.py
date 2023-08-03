@@ -67,7 +67,7 @@ def datechk(ymd):
         if dy <= mo_dy_list[mo]:
             return True
         elif mo == 2 and dy == 29:
-            if i % 4 == 0 and i % 100 != 0 or i % 400 == 0:
+            if yr % 4 == 0 and yr % 100 != 0 or yr % 400 == 0:
                 return True
             else:
                 return False
